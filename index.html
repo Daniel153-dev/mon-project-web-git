@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nom de Votre Entreprise - Cameroun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles CSS */
+        :root {
+            --primary-color: #007bff; /* Bleu vibrant */
+            --secondary-color: #6c757d; /* Gris foncé */
+            --text-color: #343a40; /* Noir doux */
+            --background-light: #f8f9fa; /* Gris très clair */
+            --background-dark: #e9ecef; /* Gris clair */
+            --white: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary-color), #0056b3);
+            color: var(--white);
+            padding: 2em 0;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            letter-spacing: 1.5px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 0.5em;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 0 1em;
+            flex-grow: 1; /* Permet au contenu de prendre l'espace disponible */
+        }
+
+        section {
+            background-color: var(--white);
+            padding: 2.5em;
+            margin-bottom: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5em;
+            font-size: 2em;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .about-content, .services-grid, .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .about-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-light);
+            flex: 1 1 300px; /* Permet à l'image d'être flexible */
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 2 1 400px; /* Le texte prend plus de place */
+        }
+
+        .service-item {
+            background-color: var(--background-dark);
+            padding: 1.5em;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1 1 280px; /* Chaque service prend une taille flexible */
+            box-shadow: 0 1px 5px var(--shadow-light);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            background-color: var(--background-light);
+            transform: translateY(-3px);
+        }
+
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-item {
+            flex: 1 1 250px;
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 2em;
+            box-shadow: 0 -2px 8px var(--shadow-light);
+        }
+
+        /* Styles pour le bouton JavaScript */
+        #revealButton {
+            display: block;
+            margin: 2em auto 0;
+            padding: 0.8em 1.5em;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #revealButton:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #hiddenContent {
+            margin-top: 1.5em;
+            padding-top: 1.5em;
+            border-top: 1px dashed var(--secondary-color);
+            display: none; /* Caché par défaut */
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-item, .contact-item {
+                width: 90%;
+            }
+
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nom de Votre Entreprise Camerounaise</h1>
+        <p>Votre partenaire de confiance au cœur de l'Afrique !</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>À Propos de Nous</h2>
+            <div class="about-content">
+                <img src="https://via.placeholder.com/400x300?text=Votre+Image+Entreprise+Cameroun" alt="Image de l'entreprise au Cameroun">
+                <div class="about-text">
+                    <p>Bienvenue chez **Nom de Votre Entreprise Camerounaise** ! Nous sommes une équipe passionnée, ancrée au **Cameroun**, dédiée à [décrire brièvement votre domaine d'activité, ex: "offrir des solutions innovantes en technologie"].</p>
+                    <p>Depuis [Année de création], notre mission est de [décrire votre mission, ex: "contribuer activement au développement local et d'aider nos clients à atteindre leurs objectifs sur le marché camerounais et au-delà"]. Nous croyons en [vos valeurs clés, ex: "l'excellence, l'innovation et la satisfaction client, avec un engagement fort envers notre communauté"].</p>
+                    <button id="revealButton">En savoir plus sur notre histoire</button>
+                    <div id="hiddenContent">
+                        <p>Notre parcours a débuté avec une vision simple : [expliquer un peu plus l'origine ou une anecdote, peut-être liée au contexte camerounais]. Aujourd'hui, nous sommes fiers de [un accomplissement majeur ou une spécificité, par exemple, un impact local significatif].</p>
+                        <p>Rejoignez-nous dans cette aventure et découvrez comment nous pouvons collaborer pour construire un avenir meilleur au Cameroun !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Service 1</h3>
+                    <p>Description détaillée de votre premier service. Expliquez ce que vous offrez et les bénéfices pour le client camerounais.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Service 2</h3>
+                    <p>Description détaillée de votre deuxième service. Mettez en avant ses caractéristiques uniques et son adaptation au contexte local.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Service 3</h3>
+                    <p>Description détaillée de votre troisième service. Expliquez comment il résout un problème spécifique au marché camerounais.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Service 4</h3>
+                    <p>Description détaillée de votre quatrième service. N'hésitez pas à être précis et à mentionner votre expertise locale.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Nous Contacter</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> <p>Situé à Yaoundé / Douala (à préciser)<br>BP : [Votre Boîte Postale si applicable]</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> <p>+237 6XX XX XX XX (Orange / MTN)<br>+237 2XX XX XX XX (Fixe si applicable)</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> <p>contact@votredomaine.cm</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2em;">N'hésitez pas à nous contacter pour toute question ou demande de devis. Nous serons ravis de vous accompagner dans vos projets au Cameroun !</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nom de Votre Entreprise Camerounaise. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // JavaScript pour révéler le contenu caché
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealButton = document.getElementById('revealButton');
+            const hiddenContent = document.getElementById('hiddenContent');
+
+            revealButton.addEventListener('click', () => {
+                if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
+                    hiddenContent.style.display = 'block';
+                    revealButton.textContent = 'Moins d\'informations';
+                } else {
+                    hiddenContent.style.display = 'none';
+                    revealButton.textContent = 'En savoir plus sur notre histoire';
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
