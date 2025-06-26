@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Service de Conseil IT",
+      "description": "Expertise en infrastructure, sécurité et stratégie numérique.",
+      "price": "Sur devis"
+    },
+    {
+      "id": 2,
+      "name": "Développement Web Personnalisé",
+      "description": "Création de sites vitrine, e-commerce et applications web sur mesure.",
+      "price": "Sur devis"
+    },
+    {
+      "id": 3,
+      "name": "Formation & Support IT",
+      "description": "Sessions de formation adaptées et support technique continu.",
+      "price": "Sur devis"
+    }
+  ],
+  "companyInfo": {
+    "name": "Nom de Votre Entreprise Camerounaise",
+    "location": "Yaoundé / Douala",
+    "phone": "+237 6XX XX XX XX",
+    "email": "contact@votredomaine.cm"
+  }
+}
