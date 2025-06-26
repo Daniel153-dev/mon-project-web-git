@@ -242,24 +242,8 @@
 
         <section id="services">
             <h2>Nos Services</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>Service 1</h3>
-                    <p>Description détaillée de votre premier service. Expliquez ce que vous offrez et les bénéfices pour le client camerounais.</p>
+            <div id="services-container" class="services-grid">
                 </div>
-                <div class="service-item">
-                    <h3>Service 2</h3>
-                    <p>Description détaillée de votre deuxième service. Mettez en avant ses caractéristiques uniques et son adaptation au contexte local.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Service 3</h3>
-                    <p>Description détaillée de votre troisième service. Expliquez comment il résout un problème spécifique au marché camerounais.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Service 4</h3>
-                    <p>Description détaillée de votre quatrième service. N'hésitez pas à être précis et à mentionner votre expertise locale.</p>
-                </div>
-            </div>
         </section>
 
         <section id="contact">
@@ -298,6 +282,39 @@
                     revealButton.textContent = 'En savoir plus sur notre histoire';
                 }
             });
+        });
+
+        // NOUVEAU SCRIPT pour charger et afficher les services depuis data.json
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const servicesContainer = document.getElementById('services-container');
+                    // Assurez-vous que 'products' est bien le tableau dans votre data.json
+                    data.products.forEach(product => {
+                        const serviceItem = document.createElement('div');
+                        serviceItem.classList.add('service-item');
+                        // Vous pouvez ajouter une icône ici si vous le souhaitez, par exemple:
+                        // <i class="fas fa-code"></i>
+                        serviceItem.innerHTML = `
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p><strong>Prix:</strong> ${product.price}</p>
+                        `;
+                        servicesContainer.appendChild(serviceItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement ou de l\'analyse de data.json :', error);
+                    // Afficher un message d'erreur sur la page si nécessaire
+                    const servicesContainer = document.getElementById('services-container');
+                    servicesContainer.innerHTML = '<p style="color: red; text-align: center;">Impossible de charger les services pour le moment. Veuillez réessayer plus tard.</p>';
+                });
         });
     </script>
 </body>
